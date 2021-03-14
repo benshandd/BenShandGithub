@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Template</title>
+   </head>
+      <body>
+         <ul>
+            <nav>
+               <!-- Creates the links for the nav bar -->
+               <li><a href="{{ url_for('home') }}">Home</a></li>
+            </nav>
+         </ul>
+      </body>
+      {% block body %}
+      {% endblock %}
+
+</html>

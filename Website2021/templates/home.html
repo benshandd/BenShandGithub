@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Home</title>
+      <meta charset="utf-8">
+   </head>
+   {% extends "template.html" %}
+   {% block body %}
+         <h1>Our Pizzas </h1>
+      {%for pizza in fetch%}
+      <div class="gallery">
+        <a href="/pizza/{{pizza[0]}}">
+          <img src="{{pizza[3] }}" width="400" height="400"></a>
+        <div class="desc">{{ pizza[1] }}</div>
+      </div>
+      {%endfor%}
+   </div>
+   {% endblock %}
+</html>
