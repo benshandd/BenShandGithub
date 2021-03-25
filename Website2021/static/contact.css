@@ -1,11 +1,5 @@
 /* Styles contact us text */
-.contactus {
-    text-align: center;
-    margin: auto;
-    width: 50%;
-    padding: 35px;
-    font-size: 50px;
-}
+
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {

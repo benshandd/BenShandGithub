@@ -1,23 +1,28 @@
-/* Imports all fonts needed */
+/* Colors */
+/* NAV FONT COLOR */
+
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=PT+Sans&display=swap");
 
-
 @font-face {
-  font-family: 'EquitanSans';
-  src: url('webfont.eot'); /* IE9 Compat Modes */
-  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
-       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+    font-family: "EquitanSans";
+    src: url('./fonts/EquitanSans-Bold.otf') format('embedded-opentype'), /* Internet Explorer */
+         url('./fonts/EquitanSans-Bold.otf') format('woff2'), /* Super Modern Browsers */
+         url('./fonts/EquitanSans-Bold.otf') format('woff'), /* Pretty Modern Browsers */
+         url('./fonts/EquitanSans-Bold.otf')  format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/EquitanSans-Bold.otf') format('svg'); /* Legacy iOS */
 }
-.equitansans {
-    font-family: "EquitanSans",cursive;
-}
-
 
 .allfont {
-    font-family: "PT Sans", cursive;
+    font-family: "EquitanSans", ;
+    letter-spacing: 0.8px;
+}
+
+.contactus {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 35px;
+    font-size: 50px;
 }
 
 /* This is to style my icons */
@@ -180,7 +185,7 @@ a {
 
 /* classifies font for the nav bar */
 nav {
-    font-family: "PT Sans", cursive;
+    font-family: "EquitanSans";
 }
 
 /* Styles nav bar */
@@ -190,7 +195,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #282729;
-    font-family: sans-serif;
+    font-family: 'EquitanSans';
     font-size: 18px;
 }
 
@@ -200,12 +205,12 @@ body {
 }
 
 title {
-    font-family: sans-serif;
+    font-family: 'EquitanSans';
     font-size: 17px;
 }
 
 footer {
-    font-family: sans-serif;
+    font-family: 'EquitanSans';
     font-size: 17px;
 }
 
