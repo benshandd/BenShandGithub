@@ -1,120 +1,130 @@
 /* Colors */
+
+
 /* NAV FONT COLOR */
 
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=PT+Sans&display=swap");
-
 @font-face {
-    font-family: "BraziliaSevenCGRegular";
-    src: url('./fonts/BraziliaSevenCGRegular.otf') format('embedded-opentype'), /* Internet Explorer */
-         url('./fonts/BraziliaSevenCGRegular.otf') format('woff2'), /* Super Modern Browsers */
-         url('./fonts/BraziliaSevenCGRegular.otf') format('woff'), /* Pretty Modern Browsers */
-         url('./fonts/BraziliaSevenCGRegular.otf')  format('truetype'), /* Safari, Android, iOS */
-         url('./fonts/BraziliaSevenCGRegular.otf') format('svg'); /* Legacy iOS */
+	font-family: "BraziliaSevenCGRegular";
+	src: url('./fonts/BraziliaSevenCGRegular.otf') format('embedded-opentype'), /* Internet Explorer */
+	url('./fonts/BraziliaSevenCGRegular.otf') format('woff2'), /* Super Modern Browsers */
+	url('./fonts/BraziliaSevenCGRegular.otf') format('woff'), /* Pretty Modern Browsers */
+	url('./fonts/BraziliaSevenCGRegular.otf') format('truetype'), /* Safari, Android, iOS */
+	url('./fonts/BraziliaSevenCGRegular.otf') format('svg'); ,	/* Legacy iOS */
 }
 
-
 img {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 .footer_pad {
-  width: auto;
-    border: 5px solid red;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 20px;
+	width: auto;
+	border: 5px solid red;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 20px;
 }
 
 .social_pad {
-border: 5px solid red;
-width: 130px;
+	border: 5px solid red;
+	width: 30px;
 }
 
 .center {
-text-align:center;
+	text-align: center;
 }
 
 .body_padding {
-  width: auto;
-    border: 5px solid red;
-    margin: 20px;
+	width: auto;
+	border: 5px solid red;
+	padding: 50px;
+	margin: 20px;
 }
 
 .home_title {
-  width: auto;
-  margin: 20px;
-    border: 5px solid red;
-  padding-top: 20px;
-text-align: center;
-  letter-spacing: 30px;
-  font-size: 130px;
+	padding-top: 0;
+	text-align: center;
+	letter-spacing: 30px;
+	font-size: 220px;
 }
+
 
 /* This is to style my icons */
+
 .icons {
-    outline: none;
-    font-size: 30px;
-    color: black;
+	outline: none;
+	font-size: 30px;
+	color: black;
 }
 
+
 /* Grabs color */
+
 a {
-    color: inherit;
+	color: inherit;
 }
-/*fonts*/
+
 /* classifies font for the nav bar */
-.font{
-    font-family: 'BraziliaSevenCGRegular';
+
+.font {
+	font-family: 'BraziliaSevenCGRegular';
 }
+
 .font_title {
-    font-family: 'BraziliaSevenCGRegular';
-    font-size: 120px;
+	font-family: 'BraziliaSevenCGRegular';
+	font-size: 25px;
 }
 
 .font_footer {
-    font-family: 'BraziliaSevenCGRegular';
-    font-size: 17px;
-}
-.font_body {
-    font-family: 'BraziliaSevenCGRegular';
-    font-size: 17px;
+	font-family: 'BraziliaSevenCGRegular';
+	font-size: 17px;
 }
 
-/* Styles nav bar */
-.style_navbar {
-    list-style-type: none;
-    padding-left: 50px;
-    padding-top: 30px;
-    overflow: hidden;
-    font-family: 'BraziliaSevenCGRegular';
-    font-size: 25px;
+.font_body {
+	font-family: 'BraziliaSevenCGRegular';
+	font-size: 17px;
 }
+
+
+/* Styles nav bar */
+
+.style_navbar {
+	list-style-type: none;
+	padding-left: 50px;
+	padding-top: 30px;
+	overflow: hidden;
+	font-family: 'BraziliaSevenCGRegular';
+	font-size: 25px;
+}
+
 li {
-    float: left;
+	float: left;
 }
 
 li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 20px 10px;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 20px 10px;
 }
 
 li a:hover {
-    background-color: black;
-    color: yellow;
-
+	background-color: black;
+	color: yellow;
 }
 
 
 /* Styles background color for website */
+
 body {
-    background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 
 /* Removes underlines for everything using a <a> or <u> tag */
-a,u{
-    text-decoration: none;
+
+a,
+u {
+	text-decoration: none;
 }
