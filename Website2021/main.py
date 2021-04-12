@@ -51,19 +51,14 @@ def work_with_us():
 
 @app.route("/shop")
 def shop():
-        conn = sqlite3.connect('WhoCares.db')
-        c = conn.cursor()
-        c.execute("SELECT * FROM Products ORDER BY id;")
-        gg = c.fetchall()
-        conn.close()
-        return render_template("shop.html", gg=gg)
+    all_products = models.Products.query.all()
+    return render_template("shop.html",all_products=all_products)
 
 
 @app.route('/products/<id>')
 def separate_products(id):
         product = models.Pizza.query.filter_by(id=id).first_or_404()
-        return render_template("separate_products.html",
-        get_product=get_product)
+        return render_template("separate_products.html")
 
 
 #route for sell page

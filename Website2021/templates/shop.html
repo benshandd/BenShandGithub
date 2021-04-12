@@ -16,12 +16,13 @@
                includes staple fruit and vegetables as well as interesting seasonal
                items.
             </h2>
+            {% for all_products in all_products %}
             <div class="gallery">
-               <a href="/products/{{get_product[0]}}">
-                  <div class="desc">{{ get_product[1] }}</div>
-                  <img src="{{ get_product[7] }}" width="600" height="400">
+               <a href="/all_products/{{ all_products.id }}">
+                  <div class="desc">{{ all_products.description }}</div>
+                  <img src="{{ all_products.image }}" width="600" height="400">
                </a>
-               {%endfor%}
+               {% endfor %}
             </div>
          </div>
       </div>
