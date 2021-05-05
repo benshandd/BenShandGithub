@@ -17,3 +17,13 @@ def separate_products(id):
         conn.close()
         return render_template("separate_products.html",
         get_product=get_product)
+
+
+        {% for all_products in all_products %}
+        <div class="gallery">
+          <a target="_blank">
+            <img src="{{ all_products.image }}" width="600" height="400">
+          </a>
+          <div class="desc">{{ all_products.product_name }}</div>
+        </div>
+           {% endfor %}

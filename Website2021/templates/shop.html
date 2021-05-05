@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="utf-8">
       <title>Shop</title>
       <meta charset="utf-8">
    </head>
    {% extends "template.html" %}
-
+   {% block content %}
    <body>
-{% block content %}
-      <div class="body_padding">
-         <div class="font_body">
-            <h2>All of these boxes are at a discounted price, provides a week's
-               worth of seasonal organic fruit for approximately one to
-               two people depending on requirements. The range varies but always
-               includes staple fruit and vegetables as well as interesting seasonal
-               items.
-            </h2>
-            {% for all_products in all_products %}
-            <div class="gallery">
-               <a href="/products/{{ all_products.id }}">
-                  <div class="desc">{{ all_products.description }}</div>
-                  <img src="{{ all_products.image }}">
-               </a>
-               {% endfor %}
-            </div>
-         </div>
+
+       <div class="body_padding">
+        <div class="font">
+
+      <h2>WhoCares? is a NZ owned and operated family business, based in the
+         Christchurch region. As a Fruit Wholesale Distribution, We have supplied
+         Fresh Fruit to quality focused customers for generations. Specialising in
+         wholesale distribution around New Zealand, we have a great spirited team of
+         more than 30 diligent people and pride ourselves on our high standard of
+         produce quality, customer service, and expertise.
+      </h2>
+          {% for all_products in all_products %}
+<div class="gallery">
+        <a target="_blank" href="/products/{{ all_products.id }}">
+
+          <div class="change_image">
+          <img src="{{ all_products.image1 }}">
+        </div>
+
+        </a>
+        <div class="desc">
+          {{ all_products.brand }}<br>
+          {{ all_products.product_name }}<br>
+          {{ all_products.size }}<br>
+          <b>{{ all_products.price }}</b>
+        </div>
       </div>
-      </div>
-</div>
-   {%endblock %}
+      {% endfor %}
    </body>
+</div>
+</div>
+<div class="in_place">
+   {%endblock %}
 </html>

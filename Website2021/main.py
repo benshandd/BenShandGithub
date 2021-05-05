@@ -46,7 +46,7 @@ def work_with_us():
 
 @app.route("/shop")
 def shop():
-    all_products = models.Products.query.all()
+    all_products = models.Products.query.order_by(models.Products.id).all()
     return render_template("shop.html",all_products=all_products)
 
 

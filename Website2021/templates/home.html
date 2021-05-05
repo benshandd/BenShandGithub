@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="utf-8">
       <title>whocares?</title>
       <meta charset="utf-8">
    </head>
    {% extends "template.html" %}
    {% block content %}
    <body>
-       {% include 'home_title.html' %}
-<div class="home_images">
-  <a href="{{ url_for('shop') }}">
-      <img src="/static/img/home/jackboy.png" width="500" height="800">
-    </a>
-    <a href="{{ url_for('sell') }}">
-                      <img src="/static/img/home/af1.jpeg" width="500" height="800"  >
-                      </div>
-                      </a>
-
-       <div class="body_padding">
-        <div class="font">
-          <div class="center">
-      <h2>All Fruits is a NZ owned and operated family business, based in the
-         Christchurch region. As a Fruit Wholesale Distribution, We have supplied
-         Fresh Fruit to quality focused customers for generations. Specialising in
-         wholesale distribution around New Zealand, we have a great spirited team of
-         more than 30 diligent people and pride ourselves on our high standard of
-         produce quality, customer service, and expertise.
-      </h2>
-      <br>
-      <br>
-      <br>
-      <h1>Why AllFruits?</h1>
-      <h1>Fresh food, no matter what</h1>
-      <h3>Looking for value? Want to support local farmers or growers? Or just
-         want to be able to personally select your fruit? Whatever the reason, when
-         you shop at All Fruits, you'll always get quality, fresh fruit at great
-         prices.
-      </h3>
-      <h1>Your link to all the locals</h1>
-      <h3>For the best quality food, you don’t have to travel far, and neither do
-         we. We know the freshest food is right outside our backdoor, so we source
-         our fruit from local markets and growers, so you can enjoy New Zealand’s
-         best produce.
-      </h3>
+      {% include 'home_title.html' %}
+      <div class="home_images">
+         <a href="{{ url_for('shop') }}">
+         <img src="/static/img/home/jackboy.png" width="500" height="800">
+         </a>
+         <a href="{{ url_for('sell') }}">
+         <img src="/static/img/home/af1.jpeg" width="500" height="800"  >
+      </div>
+      </a>
+      <div class="body_padding">
+         <div class="font">
+            <div class="center">
+               <h2>All Fruits is a NZ owned and operated family business, based in the
+                  Christchurch region. As a Fruit Wholesale Distribution, We have supplied
+                  Fresh Fruit to quality focused customers for generations. Specialising in
+                  wholesale distribution around New Zealand, we have a great spirited team of
+                  more than 30 diligent people and pride ourselves on our high standard of
+                  produce quality, customer service, and expertise.
+               </h2>
+               <br>
+               <br>
+               <br>
+               <h1>Why WhoCares?</h1>
+               <h1>Fresh food, no matter what</h1>
+               <h3>Looking for value? Want to support local farmers or growers? Or just
+                  want to be able to personally select your fruit? Whatever the reason, when
+                  you shop at All Fruits, you'll always get quality, fresh fruit at great
+                  prices.
+               </h3>
+               <h1>Your link to all the locals</h1>
+               <h3>For the best quality food, you don’t have to travel far, and neither do
+                  we. We know the freshest food is right outside our backdoor, so we source
+                  our fruit from local markets and growers, so you can enjoy New Zealand’s
+                  best produce.
+               </h3>
    </body>
-</div>
+   </div>
+   </div>
+   </div>
    {%endblock %}
 </html>
