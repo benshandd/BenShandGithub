@@ -4,7 +4,8 @@
    <head>
       <meta charset="utf-8">
       <title>{{ sep.product_name }}</title>
-       <link rel= "stylesheet" type= "text/css" href= "static/style.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{url_for('static', filename='filter.js')}}"></script>
    </head>
    <body>
 

@@ -3,7 +3,8 @@
    <head>
       <meta charset="utf-8">
       <title>Sell</title>
-       <link rel= "stylesheet" type= "text/css" href= "static/style.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{url_for('static', filename='filter.js')}}"></script>
    </head>
    {% extends "template.html" %}
    {% block content %}
