@@ -8,31 +8,26 @@
    {% extends "template.html" %}
    {% block content %}
    <body>
-<div class="font">
-           <div id="subtitle">
-              <h1>SHOP
-              </h1>
-              <div class="dropdown">
-
-                <button onclick="myFunction()" class="dropbtn">Category + </button>
-                <div id="myDropdown" class="dropdown-content">
-                  {% for filter_tops in filter_tops %}
-                  {% endfor %}
-                  <a target="_blank" href="/shop">T-Shirts</a>
-                  <a href="#">Shorts</a>
-                  <a href="#">Pants</a>
-                  <a href="#">Shirts</a>
-                  <a href="#">Sweaters</a>
-                  <a href="#">Outer Wear</a>
-                  <a href="#">Accessories</a>
-        </div>
-    </div>
-
-
-<div class="body_padding">
-
-
-{% for all_products in all_products %}
+      <div class="font">
+      <div id="subtitle">
+         <h1>SHOP
+         </h1>
+         <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Category + </button>
+            <div id="myDropdown" class="dropdown-content">
+               {% for filter_tops in filter_tops %}
+               {% endfor %}
+               <a target="_blank" href="/shop">T-Shirts</a>
+               <a href="#">Shorts</a>
+               <a href="#">Pants</a>
+               <a href="#">Shirts</a>
+               <a href="#">Sweaters</a>
+               <a href="#">Outer Wear</a>
+               <a href="#">Accessories</a>
+            </div>
+         </div>
+         <div class="body_padding">
+            {% for all_products in all_products %}
             <div class="gallery">
                <a target="_blank" href="/products/{{ all_products.id }}">
                   <div class="change_image">

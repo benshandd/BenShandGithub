@@ -22,24 +22,19 @@
 
 
 main, nav{
-    width: 100%;
+  width: 100%;
     position: relative;
+    padding: none;
     margin: 0 auto;
-    padding-bottom: 8px;
+    padding-bottom: 5px;
 
 }
 nav{perspective: 800px; z-index: 999;}
 #main-navigation-container{
-    width: 100%;
+    width: 1080px;
     background: #03596d;
 }
-.company-title{
-    float: left;
-}
-.company-title li a{
-    font-size: 1.3rem;
-    line-height: 3rem;
-}
+
 .navigation-items{
     float: left;
       font-family: 'BraziliaSevenCGRegular';
@@ -63,8 +58,7 @@ nav{perspective: 800px; z-index: 999;}
     width: 100%;
     position: absolute;
     left: 0;
-    background: #f2f2f2;
-    border: 1px solid #cecece;
+    background: white;
     border-top: none;
     padding: 1rem;
     z-index: 1001;
@@ -83,14 +77,10 @@ nav{perspective: 800px; z-index: 999;}
     z-index: 1002;
     transform: rotateY(0);
 }
-
-.navigation-items>ul>li:hover>a, .navigation-items>ul>li:focus>a{
-
-
-}
 .list{
     float: left;
     width: 20%;
+    
 }
 .category-title h2{
     color:#03596d;
@@ -102,7 +92,7 @@ nav{perspective: 800px; z-index: 999;}
 .submenu li a{
     font-size: .9rem;
     line-height: 1.8;
-    color: #555;
+color: black;
     font-family: "AlergiaNormal";
 }
 .submenu li a:hover{
