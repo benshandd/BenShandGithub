@@ -1,5 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <nav>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
    <section class="navigation-items">
    <ul>
    <li>
@@ -121,16 +122,25 @@
 </nav>
 <div class="font">
 <div class = "style_navbar">
-   <!-- Creates the links for the nav bar -->
-   <li class="styling_li" >
-      <div id="shop_properties">
-<head>
+<!-- Creates the links for the nav bar -->
+<li class="styling_li" >
+   <div id="shop_properties">
+
          <a class="nav_pad" href="{{ url_for('sell') }}">Sell</a>
          <a class="nav_pad" href="{{ url_for('about') }}">About</a>
          <a class="nav_pad" href="{{ url_for('home') }}">Home</a>
-   </li>
-   <div id="search_properties">
-   <a class="nav_pad" href="{{ url_for('search') }}">Search
-   </a>
-   </div>
-   </div>
+</li>
+
+
+
+
+
+<div class="search_body">
+<form class="search-container">
+<input type="text" id="search-bar" placeholder="Enter a search term">
+<a href="#"><img class="search-icon" onclick="search(document.getElementById('search').value) "src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+</form>
+</div>
+<div id="search_properties">
+</div>
+</div>

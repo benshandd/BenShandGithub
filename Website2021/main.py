@@ -1,5 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,url_for, request
+
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 from config import Config  # config now moved to its own file
 
 app = Flask(__name__)
@@ -8,7 +10,7 @@ db = SQLAlchemy(app)
 
 import models
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'], defaults={"page": 1})
 def home():
         return render_template("home.html")
 
@@ -62,9 +64,23 @@ def separate_products(id):
 def sell():
     return render_template("sell.html")
 
-@app.route("/search")
-def search():
-    return render_template("search.html")
+@app.route('/search/<int:page>', methods=['GET', 'POST'])
+def search(page):
+    page = page
+    pages = 5
+    #employees = Employees.query.filter().all()
+    #employees = Employees.query.paginate(page,pages,error_out=False)
+    employees = models.Products.query.order_by(models.Products.id.asc()).paginate(page,pages,error_out=False)  #desc()
+    if request.method == 'POST' and 'tag' in request.form:
+       tag = request.form["tag"]
+       search = "%{}%".format(tag)
+       #employees = Employees.query.filter(Employees.fullname.like(search)).paginate(per_page=pages, error_out=False) # LIKE: query.filter(User.name.like('%ednalan%'))
+       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon').paginate(per_page=pages, error_out=True) # equals: query.filter(User.name == 'ednalan')
+       #employees = Employees.query.filter(Employees.fullname.in_(['rai', 'kenshin', 'Ednalan'])).paginate(per_page=pages, error_out=True) # IN: query.filter(User.name.in_(['rai', 'kenshin', 'Ednalan']))
+       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon', Employees.position == 'System Architect').paginate(per_page=pages, error_out=True) # AND: query.filter(User.name == 'ednalan', User.fullname == 'clyde ednalan')
+       employees = models.Products.query.filter(or_(models.Products.product_name == 'Shirt', Employees.product_name == 'Pants')).paginate(per_page=pages, error_out=True) # OR: from sqlalchemy import or_  filter(or_(User.name == 'ednalan', User.name == 'caite'))
+       return render_template('search.html', shirts=shirts, tag=tag)
+    return render_template('search.html', shirts=shirts)
 
 #reroutes 404 errrors
 @app.errorhandler(404)

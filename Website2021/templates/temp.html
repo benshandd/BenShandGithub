@@ -27,3 +27,16 @@ def separate_products(id):
           <div class="desc">{{ all_products.product_name }}</div>
         </div>
            {% endfor %}
+
+           @app.route("/search",methods == ['POST', 'GET'])
+           def search():
+               if requests.method =='POST':
+                   print('post method')
+                   form = requests.form
+                   search_value = form['string_search']
+                   print(search_value)
+                   search  = "%{}%".format(search_value)
+                   print(search)
+                   results= models.Products.query.filter(Products.product_name.like(search)).all()
+                   print(results)
+                   return render_template("search.html", products=results)
