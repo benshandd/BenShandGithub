@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 import models
 
-@app.route("/", methods=['GET', 'POST'], defaults={"page": 1})
+@app.route("/")
 def home():
         return render_template("home.html")
 
@@ -49,7 +49,8 @@ def work_with_us():
 @app.route("/shop")
 def shop():
     all_products = models.Products.query.order_by(models.Products.id).all()
-    return render_template("shop.html",all_products=all_products)
+    mens_all = models.Products.query.filter_by(gender="Mens").first_or_404()
+    return render_template("shop.html",all_products=all_products, mens_all=mens_all)
 
 
 

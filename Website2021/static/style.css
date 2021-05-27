@@ -116,9 +116,7 @@ nav{perspective: 800px; z-index: 999;}
     opacity: 0;
     visibility: hidden;
 
-    transform: rotateY(180deg);
-    transform-origin: top;
-    transition: .4s opacity ease, .4s transform cubic-bezier(0.902, 0.149, 0.22, 0.934);
+
 
 }
 
@@ -145,11 +143,10 @@ nav{perspective: 800px; z-index: 999;}
     line-height: 1.8;
 color: black;
     font-family: "AlergiaNormal";
+        text-decoration: none;
 }
 .submenu li a:hover{
-    color:#f7005f;
-    border-bottom: 1px dotted #03596d;
-
+    text-decoration: none;
 }
 
 
