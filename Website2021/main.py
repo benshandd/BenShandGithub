@@ -12,13 +12,18 @@ import models
 
 @app.route("/")
 def home():
-        return render_template("home.html")
+    return render_template("home.html")
 
 
 #route for about page
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/nav")
+def nav(womens_all):
+    womens_all = models.Products.query.order_by(models.Products.product_type).filter_by(gender="womens").first()
+    return render_template("nav.html",womens_all=womens_all)
 
 
 @app.route("/our_stores")
@@ -45,15 +50,32 @@ def refund_policy():
 def work_with_us():
     return render_template("work_with_us.html")
 
-#######################################
+#shop landing page
 @app.route("/shop")
 def shop():
     all_products = models.Products.query.order_by(models.Products.id).all()
-    mens_all = models.Products.query.filter_by(gender="Mens").first_or_404()
-    return render_template("shop.html",all_products=all_products, mens_all=mens_all)
+    return render_template("shop.html",all_products=all_products)
 
+#######################################
+@app.route("/shop/<string:mens_all>")
+def shop_filter(mens_all):
+    mens_all = models.Products.query.order_by(models.Products.id).filter_by(gender="mens").all()
+    filter = models.Products.query.order_by(models.Products.gender).first()
+    #filter_first = models.Products.query.filter_by(gender="mens").first()
+    return render_template("shop_filter.html", mens_all=mens_all)
 
+@app.route("/shop<string:filter_tshirts>")
+def filter_product_type(filter_tshirts):
+    filter_tshirts = models.Products.query.order_by(models.Products.id).filter_by(product_type="t-shirt").all()
+    return render_template("filter_product_type.html", filter_tshirts=filter_tshirts)
+#filter_first=filter_first
 
+#@app.route("/shop/<string:gender>")
+#def shop_filter(gender):
+    #gender = models.Products.query.filter_by(gender="womens").all()
+    #return render_template("shop_filter.html",gender=gender)
+
+#seprate products pages
 @app.route('/products/<id>')
 def separate_products(id):
     sep= models.Products.query.filter_by(id=id).first_or_404()
@@ -65,23 +87,6 @@ def separate_products(id):
 def sell():
     return render_template("sell.html")
 
-@app.route('/search/<int:page>', methods=['GET', 'POST'])
-def search(page):
-    page = page
-    pages = 5
-    #employees = Employees.query.filter().all()
-    #employees = Employees.query.paginate(page,pages,error_out=False)
-    employees = models.Products.query.order_by(models.Products.id.asc()).paginate(page,pages,error_out=False)  #desc()
-    if request.method == 'POST' and 'tag' in request.form:
-       tag = request.form["tag"]
-       search = "%{}%".format(tag)
-       #employees = Employees.query.filter(Employees.fullname.like(search)).paginate(per_page=pages, error_out=False) # LIKE: query.filter(User.name.like('%ednalan%'))
-       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon').paginate(per_page=pages, error_out=True) # equals: query.filter(User.name == 'ednalan')
-       #employees = Employees.query.filter(Employees.fullname.in_(['rai', 'kenshin', 'Ednalan'])).paginate(per_page=pages, error_out=True) # IN: query.filter(User.name.in_(['rai', 'kenshin', 'Ednalan']))
-       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon', Employees.position == 'System Architect').paginate(per_page=pages, error_out=True) # AND: query.filter(User.name == 'ednalan', User.fullname == 'clyde ednalan')
-       employees = models.Products.query.filter(or_(models.Products.product_name == 'Shirt', Employees.product_name == 'Pants')).paginate(per_page=pages, error_out=True) # OR: from sqlalchemy import or_  filter(or_(User.name == 'ednalan', User.name == 'caite'))
-       return render_template('search.html', shirts=shirts, tag=tag)
-    return render_template('search.html', shirts=shirts)
 
 #reroutes 404 errrors
 @app.errorhandler(404)

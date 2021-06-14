@@ -40,3 +40,56 @@ def separate_products(id):
                    results= models.Products.query.filter(Products.product_name.like(search)).all()
                    print(results)
                    return render_template("search.html", products=results)
+
+
+                   <!DOCTYPE html>
+                   <html>
+                      <head>
+                         <title>Shop</title>
+                         <meta charset="utf-8">
+                         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+                       <script src="{{url_for('static', filename='filter.js')}}"></script>
+                      </head>
+                      {% extends "template.html" %}
+                      {% block content %}
+                      <body>
+                         <div class="font">
+                         <div id="subtitle">
+                            <h1>SHOP
+                            </h1>
+                            <div class="dropdown">
+                               <button onclick="myFunction()" class="dropbtn">Category + </button>
+                               <div id="myDropdown" class="dropdown-content">
+                                  {% for filter_tops in filter_tops %}
+                                  {% endfor %}
+                                  <a target="_blank" href="/shop">T-Shirts</a>
+                                  <a href="#">Shorts</a>
+                                  <a href="#">Pants</a>
+                                  <a href="#">Shirts</a>
+                                  <a href="#">Sweaters</a>
+                                  <a href="#">Outer Wear</a>
+                                  <a href="#">Accessories</a>
+                               </div>
+                            </div>
+                            <div class="body_padding">
+                              {% for mens_all in mens_all %}
+                              <div class="gallery">
+                                 <a target="_blank" href="/products/{{ mens_all.id }}">
+                                    <div class="change_image">
+                                       <img src="{{ mens_all.image1 }}">
+                                    </div>
+                                 </a>
+                                 <div class="desc">
+                                    {{ mens_all.brand }}<br>
+                                    {{ mens_all.product_name }}<br>
+                                    {{ mens_all.size }}<br>
+                                    <b>{{ mens_all.price }}</b>
+                                 </div>
+                              </div>
+                              {% endfor %}
+                      </body>
+                      </div>
+                      </div>
+                      <div class="in_place">
+                      {%endblock %}
+                   </html>

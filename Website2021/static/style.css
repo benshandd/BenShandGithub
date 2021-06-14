@@ -19,6 +19,23 @@
          url('./fonts/AlergiaNormal.otf')  format('truetype'), /* Safari, Android, iOS */
          url('./fonts/AlergiaNormal.otf') format('svg'); /* Legacy iOS */
 }
+
+.container {
+       display: flex;
+       align-items: center;
+       justify-content: center
+     }
+     img {
+       max-width: 100%
+     }
+     .image {
+       flex-basis: 40%
+     }
+     .text {
+       font-size: 15px;
+       padding-left: 20px;
+       font-family:"AlergiaNormal";
+     }
 .search_body{
 padding-bottom: 50px;
 }
@@ -230,11 +247,14 @@ main section > p{
 .show {display:block;}
 
 #subtitle{
-padding-top: 50px;
+
 }
 
+#caps{
+  text-transform: capitalize;
+}
 .image_left{
-float: right;
+
 }
 
 div.gallery {
