@@ -52,9 +52,13 @@ def shop():
     mens_all = models.Products.query.filter_by(gender="Mens").first_or_404()
     return render_template("shop.html",all_products=all_products, mens_all=mens_all)
 
+@app.route("/shop/test")
+def shop_filter(gender,product_type):
+    filter_gender = models.Products.query.filter_by(Products.gender.like('Mens%')).order_by(gender=gender).all()
+    filter_product_type = models.Products.query.filter_by(product_type=product_type).first_or_404()
+    return render_template("shop_filter.html", filter_gender=filter_gender,filter_product_type=filter_product_type)
 
-
-@app.route('/products/<id>')
+@app.route('/products/<id>', methods=['GET', 'POST'])
 def separate_products(id):
     sep= models.Products.query.filter_by(id=id).first_or_404()
     return render_template('separate_products.html', sep=sep)
@@ -65,23 +69,6 @@ def separate_products(id):
 def sell():
     return render_template("sell.html")
 
-@app.route('/search/<int:page>', methods=['GET', 'POST'])
-def search(page):
-    page = page
-    pages = 5
-    #employees = Employees.query.filter().all()
-    #employees = Employees.query.paginate(page,pages,error_out=False)
-    employees = models.Products.query.order_by(models.Products.id.asc()).paginate(page,pages,error_out=False)  #desc()
-    if request.method == 'POST' and 'tag' in request.form:
-       tag = request.form["tag"]
-       search = "%{}%".format(tag)
-       #employees = Employees.query.filter(Employees.fullname.like(search)).paginate(per_page=pages, error_out=False) # LIKE: query.filter(User.name.like('%ednalan%'))
-       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon').paginate(per_page=pages, error_out=True) # equals: query.filter(User.name == 'ednalan')
-       #employees = Employees.query.filter(Employees.fullname.in_(['rai', 'kenshin', 'Ednalan'])).paginate(per_page=pages, error_out=True) # IN: query.filter(User.name.in_(['rai', 'kenshin', 'Ednalan']))
-       #employees = Employees.query.filter(Employees.fullname == 'Tiger Nixon', Employees.position == 'System Architect').paginate(per_page=pages, error_out=True) # AND: query.filter(User.name == 'ednalan', User.fullname == 'clyde ednalan')
-       employees = models.Products.query.filter(or_(models.Products.product_name == 'Shirt', Employees.product_name == 'Pants')).paginate(per_page=pages, error_out=True) # OR: from sqlalchemy import or_  filter(or_(User.name == 'ednalan', User.name == 'caite'))
-       return render_template('search.html', shirts=shirts, tag=tag)
-    return render_template('search.html', shirts=shirts)
 
 #reroutes 404 errrors
 @app.errorhandler(404)

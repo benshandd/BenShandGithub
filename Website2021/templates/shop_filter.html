@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Test</title>
+       {% for filter_gender in filter_gender %}
+       {% for filter_product_type in filter_product_type %}
+      <title>{{ filter_gender.gender }} {{ filter_product_type.product_type }}</title>
+      {% endfor %}
+      {% endfor %}
       <meta charset="utf-8">
       <script src="{{url_for('static', filename='filter.js')}}"></script>
    </head>
