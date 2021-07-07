@@ -1,5 +1,5 @@
-const SafemoonFork = artifacts.require('SafemoonFork.sol');
+const CobraCash = artifacts.require('CobraCash.sol');
 
 module.exports = function (deployer) {
-  deployer.deploy(SafemoonFork);
+  deployer.deploy(CobraCash);
 };
