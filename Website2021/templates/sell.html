@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="utf-8">
-      <title>Sell</title>
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <title>SELL</title>
+      <meta charset="utf-8">
    </head>
    {% extends "template.html" %}
    {% block content %}
    <body>
-     <div class="font">
-                <div id="subtitle">
-                   <h1>SELL
-                   </h1>
-        </div>
+      <div class="font">
+         <div class="post-thumb-left"><img src="/static/img/sell/aperture.png" /></div>
+         <div class="post-title-left">
+            <h1>SELL</h1>
+            <p>We sell quality clothing, shoes and accessories. We sell the items<br>
+               on your behalf.You get 50% of the sale price. Simple as that.<br>
+               In store you’ll find a variety of designer,
+               vintage and quality high<br> street brands.We carefully accept
+               pieces based on <br>age, quality, style, brand, and season, as well<br>
+               as what we see selling in store. As a general rule, if you wouldn’t<br>
+               give it to a friend, we probably won’t be able to take it either!<br>
+         </div>
+         <div class="post-thumb-right"><img src="/static/img/sell/rack.png" /></div>
+         <div class="post-title-right">
+            <h1>CLOTHING CRITERIA</h1>
+            <b>
+            <p>• Clothing must be freshly laundered, good quality, in great condition,<br> and match the current season. Check our stores page to see what season<br> your store is currently accepting.
+               <br><br>• If you are dropping off in store we must be able to accept <br>a minimum of 5 items, or 10 if we are picking up from you. <br>So the more you put in your drop, the better!
+               <br><br>• We only accept clothing, shoes, and accessories.
+               <br><br>• We look for current or timeless styles and generally won’t <br>accept pieces older than 2 years, unless vintage. Check this list for some examples of brands we don't take.
+            </p>
          </div>
       </div>
+      </div>
+      {%endblock %}
    </body>
-   {%endblock %}
 </html>
