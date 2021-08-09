@@ -20,6 +20,8 @@
          url('./fonts/AlergiaNormal.otf') format('svg'); /* Legacy iOS */
 }
 
+
+
 .post-thumb-left img {
 float: left;
   max-width: 50%;
@@ -59,7 +61,7 @@ padding-left:200px;
 }
 
 .post-title-right{
-
+overflow: auto;
   padding-top: 70px;
 padding-left: 30px;
     font-size: 17px;
@@ -318,11 +320,22 @@ div.desc {
 }
 
 
-.home_images{
-  text-align: center;
+.home_images1{
+float: left;
+padding-left: 40px;
 }
 
-.home_images:hover {
+.home_images2{
+padding-right: 40px;
+
+float: right
+}
+
+.home_images1:hover {
+    filter: blur(2px);
+
+}
+.home_images2:hover {
     filter: blur(2px);
 }
 .footer_pad {

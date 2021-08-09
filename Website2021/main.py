@@ -21,6 +21,10 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route("/search")
+def search():
+    return render_template("search.html")
+    
 
 @app.route("/nav")
 def nav(womens_all):

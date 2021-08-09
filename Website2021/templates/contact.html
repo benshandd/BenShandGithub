@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta charset="utf-8">
-      <title>Contact</title>
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <title>Contact</title>
+      <meta charset="utf-8">
    </head>
-   <body>
    {% extends "template.html" %}
-</body>
+   {% block content %}
+   <body>
+      <div class="font">
+         <div class="post-thumb-left"><img src="/static/img/about/landscape.png" /></div>
+         <div class="post-title-left">
+            <h1>Contact</h1>
+            <h4><p>For any store specific or consignment questions please contact your relevant store below or on the stores page. Make sure to include your customer number if the question is related to your consignment.</h4>
+
+For any press or head office enquiries please email
+
+<h4><b>hello@recycleboutique.co.nz.</h4></b>22</p>
+
+<h4>Recycle Boutique 2005 Limited</h4>
+<h4>PO Box 78418</h4>
+<h4>Grey Lynn</h4>
+<h4>Auckland</h4>
+         </div>
+         <div class="post-thumb-right"><img src="/static/img/about/landscape.png" /></div>
+         <div class="post-title-right">
+            <h1>ABOUT</h1>
+            <b>
+               <p>Overview...</p>
+            </b>
+            <p>Paragraph...</p>
+         </div>
+      </div>
+      </div>
+      {%endblock %}
+   </body>
 </html>
