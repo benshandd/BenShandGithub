@@ -444,7 +444,17 @@ body {
     padding-right: 20px;
 }
 
+
+
+
+
 /* Removes underlines for everything using a <a> or <u> tag */
 a,u{
     text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }

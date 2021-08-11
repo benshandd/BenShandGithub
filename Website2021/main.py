@@ -24,7 +24,7 @@ def about():
 @app.route("/search")
 def search():
     return render_template("search.html")
-    
+
 
 @app.route("/nav")
 def nav(womens_all):
@@ -120,9 +120,10 @@ def separate_brands(brand):
 
 
 # seprate products pages
-@app.route("/products/<id>")
-def separate_products(id):
+@app.route("/products/<id>", methods=['GET','POST'])
+def separate_products(id,add_review):
     sep = models.Products.query.filter_by(id=id).first_or_404()
+    review = models.Reviews.query.filter_by(comment.add_review==id).first()
     return render_template("separate_products.html", sep=sep)
 
 

@@ -16,6 +16,7 @@ class Products(db.Model):
   store_availability = db.Column(db.String(80))
 
 
+
 class Customer(db.Model):
   __tablename__ = 'Customer'
   id = db.Column(db.String, primary_key=True)
@@ -34,3 +35,10 @@ class User(db.Model):
   image = db.Column(db.String(80))
   size = db.Column(db.Text(250))
   gender = db.Column(db.Text(250))
+
+class Reviews(db.Model):
+  __tablename__ = 'Reviews'
+  review_id = db.Column(db.String, primary_key=True)
+  review_user_id = db.Column(db.String(80))
+  associated_product = db.Column(db.String(80))
+  comment = db.Column(db.Text(250))
