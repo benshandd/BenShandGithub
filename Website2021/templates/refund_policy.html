@@ -2,11 +2,29 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>About</title>
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <title>Refund Policy</title>
+      <meta charset="utf-8">
    </head>
-   <body>
    {% extends "template.html" %}
-</body>
+   {% block content %}
+   <body>
+      <div class="font">
+      <div id="terms_text">
+         <div id="subtitle_middle">
+            <h1>REFUND POLICY
+            </h1>
+         </div>
+         <h4>
+            <p>Whether you are entitled to a repair, replacement or refund will depend on a few things:
+            <p>-the types of product or service you are buying
+<p>-what you are using the product for
+<p>-what you were told about the product or service
+<p>-how you paid
+<p>-whether you bought them from a business or a private seller.
+
+
+         </h4>
+      </div>
+      {% endblock %}
+   </body>
 </html>

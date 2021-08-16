@@ -25,6 +25,7 @@
 .post-thumb-left img {
 float: left;
   max-width: 50%;
+  max-height: 500px;
     padding-top: 40px;
     padding-right: 30px;
 }
@@ -50,6 +51,7 @@ font-family:"AlergiaNormal";
 .post-thumb-right img {
 float: right;
   max-width: 50%;
+    max-height: 500px;
     padding-top: 60px;
 
 }
@@ -284,6 +286,18 @@ main section > p{
 
 #subtitle{
 
+}
+
+#subtitle_middle{
+padding-bottom: 40px;
+}
+
+#terms_text{
+  font-family: 'AlergiaNormal';
+text-align: left;
+padding-left:500px;
+padding-right:500px;
+border-radius: 150px;
 }
 
 .caps{

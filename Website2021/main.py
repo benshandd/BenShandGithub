@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, abort, request, redirect, url_for
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
@@ -6,9 +6,17 @@ from config import Config  # config now moved to its own file
 
 app = Flask(__name__)
 app.config.from_object(Config)  # applying all config to app
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///WhoCares.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = False
+app.secret_key = 'correcthorsebatterystaple'
 db = SQLAlchemy(app)
 
+WTF_CSRF_ENABLED = True
+WTF_CSRF_SECRET_KEY = 'sup3r_secr3t_passw3rd'
+
 import models
+from forms import Add_Review
 
 
 @app.route("/")
@@ -21,52 +29,51 @@ def home():
 def about():
     return render_template("about.html")
 
+# route for about page
 @app.route("/search")
 def search():
     return render_template("search.html")
 
-
+# route for nav that gets included in template
 @app.route("/nav")
 def nav(womens_all):
-    ya_dig = models.Products.query.order_by(models.Products.id).first()
-
     all_products = models.Products.query.order_by(models.Products.id).all()
-    return render_template("nav.html", all_products=all_products, ya_dig=ya_dig)
+    return render_template("nav.html", all_products=all_products)
 
-
+# route for all who cares stores
 @app.route("/our_stores")
 def our_stores():
     return render_template("our_stores.html")
 
-
+# route for contact page
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
 
-
+# route for about page
 @app.route("/terms_of_service")
 def terms_of_service():
     return render_template("terms_of_service.html")
 
-
+# route for refundpolicy
 @app.route("/refund_policy")
 def refund_policy():
     return render_template("refund_policy.html")
 
-
+# route for work with us page
 @app.route("/work_with_us")
 def work_with_us():
     return render_template("work_with_us.html")
 
 
-# shop landing page
+# route for shop landing page
 @app.route("/shop")
 def shop():
     all_products = models.Products.query.order_by(models.Products.id).all()
     return render_template("shop.html", all_products=all_products)
 
 
-#######################################
+# route for all mens clothing
 @app.route("/shop/mens")
 def mens_filter():
     mens_all = (
@@ -74,7 +81,6 @@ def mens_filter():
         .filter_by(gender="mens")
         .all()
     )
-    # filter_first = models.Products.query.filter_by(gender="mens").first()
     return render_template("mens_filter.html", mens_all=mens_all)
 
 
@@ -89,7 +95,7 @@ def product_type_filter(product_type):
     )
     return render_template("product_type_filter.html", product_type=product_type)
 
-
+# route for all womens clothing
 @app.route("/shop/womens")
 def womens_shop_filter():
     womens_all = (
@@ -97,11 +103,10 @@ def womens_shop_filter():
         .filter_by(gender="womens")
         .all()
     )
-    # filter_first = models.Products.query.filter_by(gender="mens").first()
     return render_template("womens_filter.html", womens_all=womens_all)
 
 
-# womens shopping filter for differnt clothing types
+# mens shopping filter for differnt clothing types
 @app.route("/shop/womens/<product_type>")
 def womens_product_type_filter(product_type):
     product_type = (
@@ -123,7 +128,20 @@ def separate_brands(brand):
 @app.route("/products/<id>", methods=['GET','POST'])
 def separate_products(id):
     sep = models.Products.query.filter_by(id=id).first_or_404()
-    return render_template("separate_products.html", sep=sep)
+    form = Add_Review()
+    if request.method=='GET':  # did the browser ask to see the page
+        return render_template('separate_products.html', form=form, sep=sep, title="Separate Products")
+    else:
+        if form.validate_on_submit():
+            new_review = models.Reviews()
+            new_review.name = form.name.data
+            new_review.rating = form.rating.data
+            new_review.comment = form.comment.data
+            db.session.add(new_review)
+            db.session.commit()
+            return redirect(url_for('separate_products', id=new_review.id))
+        else:
+            return render_template("separate_products.html", sep=sep, form=form)
 
 
 

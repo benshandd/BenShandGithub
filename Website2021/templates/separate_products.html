@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
    <head>
       <meta charset="utf-8">
       <title>{{ sep.product_name }}</title>
@@ -8,66 +9,100 @@
     <script src="{{url_for('static', filename='review.js')}}"></script>
    </head>
    <body>
-
-   {% extends "template.html" %}
-   {% block content %}
+{% extends "template.html" %}
+  {% block content %}
    <div class= "font">
+     <!-- displays name for certain discountbox -->
+          <h2>{{ sep.product_name }}</h2>
+       </div>
+       <div class="align">
+          <div class="recipe_image">
+             <img height="600" width="400" src="{{ sep.image1 }}">
+          </div>
+          <div class="recipe_paragraph">
+             <!-- gets ingredients list from database-->
+             <h1>Description:</h1>
+             <h3>{{ sep.description }}</h3>
+             <!-- gets method for recipe from database-->
+             <h1>Price : </h1>
+             <h3>{{ sep.price }}</h3>
+
+
       <!-- displays name for certain discountbox -->
-      <h2>{{ sep.product_name }}</h2>
-   </div>
-   <div class="align">
-      <div class="recipe_image">
-         <img height="600" width="400" src="{{ sep.image1 }}">
-      </div>
-      <div class="recipe_paragraph">
-         <!-- gets ingredients list from database-->
-         <h1>Description:</h1>
-         <h3>{{ sep.description }}</h3>
-         <!-- gets method for recipe from database-->
-         <h1>Price : </h1>
-         <h3>{{ sep.price }}</h3>
-
-
-            <h1>Reviews : </h1>
 
 
 
-         <div id="modal" role="dialog" aria-modal="true" aria-labelledby="add-review-header" class="">
+<h1>Reviews : </h1>
+    {% for separate_products in separate_products %}
+  <p> {reviews.name}</p>
+    <p>  {reviews.rating}</p>
+      <p>  {reviews.comment}</p>
+          {% endfor %}
 
-           <div id="review-form-container">
-             <h2 id="add-review-header">Add Review</h2>
-            <form action='' method = "POST">
-               <div class="fieldset">
-                 <label>Rating</label>
-                 <div class="rate">
+          <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+            <p>Name: {{ form.name }} </p>
+            <p>Rating: {{ form.rating }} </p>
+            <p>Comment: {{ form.comment }} </p>
+            <input type="submit" value="Submit">
+          </form>
+<h1>Reviews : </h1>
+<h2>Name</h2>
+{{separate_products.name}}
 
-                   <input type="radio" id="star5" name="rate" value="5" required="">
+<h2>Movie Released</h2>
+{{separate_products.rating}}
 
-                   <label for="star5" title="5 stars">5 stars</label>
+<h2>Movie Description</h2>
+{{separate_products.comment}}
+            <form method="POST" enctype="multipart/form-data">
+           {{ form.csrf_token }}
+                          <div class="fieldset">
+                            <label for="reviewName">Name</label>
 
-                   <input type="radio" id="star4" name="rate" value="4" >
+                            <input name="reviewName" id="reviewName" required="">
 
-                   <label for="star4" title="4 stars">4 stars</label>
+                          </div>
+                          <div class="fieldset">
+                            <label>Rating</label>
+                            <div class="rate">
 
-                   <input type="radio" id="star3" name="rate" value="3" >
+                              <input type="submit" id="star5" name="rate" value="5" required="">
 
-                   <label for="star3" title="3 stars">3 stars</label>
+                              <label for="submit" title="5 stars">5 stars</label>
 
-                   <input type="radio" id="star2" name="rate" value="2" >
+                              <input type="submit" id="star4" name="rate" value="4" >
 
-                   <label for="star2" title="2 stars">2 stars</label>
+                              <label for="submit" title="4 stars">4 stars</label>
 
-                   <input type="radio" id="star1" name="rate" value="1" >
+                              <input type="submit" id="star3" name="rate" value="3" >
 
-                   <label for="star1" title="1 star">1 star</label>
-                 </div>
-               </div>
-                 <button id="submit-review-btn">Save</button>
-               </div>
-             </form>
-           </div>
-         </div>
-         <div class="modal-overlay"></div>
+                              <label for="submit" title="3 stars">3 stars</label>
+
+                              <input type="submit" id="star2" name="rate" value="2" >
+
+                              <label for="submit" title="2 stars">2 stars</label>
+
+                              <input type="submit" id="star1" name="rate" value="1" >
+
+                              <label for="submit" title="1 star">1 star</label>
+                            </div>
+                          </div>
+
+                          <div class="fieldset">
+                            <label for="reviewComments">Comments</label>
+                            <textarea name="reviewComments" id="reviewComments" cols="20" rows="5" required=""></textarea>
+                          </div>
+                          <div class="fieldset right">
+                            <button id="submit-review-btn">Save</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+</div>
+</div>
+</div>
+
 
   {% endblock %}
 </body>

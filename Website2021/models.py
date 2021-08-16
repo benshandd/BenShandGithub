@@ -10,7 +10,6 @@ class Products(db.Model):
   size = db.Column(db.Text(250))
   brand = db.Column(db.Text(250))
   image1 = db.Column(db.String(120))
-  image2 = db.Column(db.String(120))
   gender = db.Column(db.Text(250))
   product_type = db.Column(db.Text(250))
   store_availability = db.Column(db.String(80))
@@ -38,11 +37,12 @@ class User(db.Model):
 
 class Reviews(db.Model):
   __tablename__ = 'Reviews'
-  review_id = db.Column(db.String, primary_key=True)
-  review_user_id = db.Column(db.String(80))
-  associated_product = db.Column(db.String(80))
+  id = db.Column(db.String, primary_key=True)
+  associated_product = db.Column(db.String(100), db.ForeignKey('Products.id'), nullable = False)
+  name = db.Column(db.String(100))
+  rating = db.Column(db.Integer)
   comment = db.Column(db.Text(250))
-  star_rating = db.Column(db.Integer)
+
 
   def __repr__(self):
       return '<Comment %r>'%self.id
