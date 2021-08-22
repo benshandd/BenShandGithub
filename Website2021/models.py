@@ -37,7 +37,7 @@ class User(db.Model):
 
 class Reviews(db.Model):
   __tablename__ = 'Reviews'
-  id = db.Column(db.String, primary_key=True)
+  id = db.Column(db.Integer, primary_key=True)
   associated_product = db.Column(db.String(100), db.ForeignKey('Products.id'), nullable = False)
   name = db.Column(db.String(100))
   rating = db.Column(db.Integer)

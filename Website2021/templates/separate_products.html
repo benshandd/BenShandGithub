@@ -37,7 +37,7 @@
   <p> {reviews.name}</p>
     <p>  {reviews.rating}</p>
       <p>  {reviews.comment}</p>
-          {% endfor %}
+
 
           <form method="POST" enctype="multipart/form-data">
             {{ form.csrf_token }}
@@ -46,15 +46,18 @@
             <p>Comment: {{ form.comment }} </p>
             <input type="submit" value="Submit">
           </form>
-<h1>Reviews : </h1>
+            {% endfor %}
+{% for reviews in reviews %}
+<h1> PastReviews : </h1>
 <h2>Name</h2>
-{{separate_products.name}}
+{reviews.name}
 
-<h2>Movie Released</h2>
-{{separate_products.rating}}
+<h2>Rating</h2>
 
-<h2>Movie Description</h2>
-{{separate_products.comment}}
+
+<h2>Comment</h2>
+{% endfor %}
+
             <form method="POST" enctype="multipart/form-data">
            {{ form.csrf_token }}
                           <div class="fieldset">
