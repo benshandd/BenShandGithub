@@ -2,7 +2,8 @@ from main import db
 
 class Products(db.Model):
   __tablename__ = 'Products'
-  id = db.Column(db.String, primary_key=True)
+  id = db.Column(db.Integer, primary_key=True)
+  url = db.Column(db.String(50))
   product_name = db.Column(db.String(80))
   description = db.Column(db.Text(250))
   price = db.Column(db.Text(250))
@@ -38,7 +39,7 @@ class User(db.Model):
 class Reviews(db.Model):
   __tablename__ = 'Reviews'
   id = db.Column(db.Integer, primary_key=True)
-  associated_product = db.Column(db.String(100), db.ForeignKey('Products.id'), nullable = False)
+  associated_product = db.Column(db.Integer, db.ForeignKey('Products.id'), nullable = False)
   name = db.Column(db.String(100))
   rating = db.Column(db.Integer)
   comment = db.Column(db.Text(250))

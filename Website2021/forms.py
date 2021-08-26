@@ -1,14 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, TextField, TextAreaField, SelectField
+from wtforms import IntegerField, TextField, TextAreaField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Optional, ValidationError
 import models
 
 
 class Add_Review(FlaskForm):
-  name = TextField('name', validators=[DataRequired()])
-  rating = IntegerField('rating', validators=[DataRequired()])
-  comment = TextField('description', validators=[DataRequired()])
-
-
-#class Select_Movie(FlaskForm):
- # movies = SelectField('movies', validators=[DataRequired()], coerce=int)
+  name = TextField('Name', validators=[DataRequired()])
+  rating = IntegerField('Rating', validators=[DataRequired()])
+  comment = TextField('Description', validators=[DataRequired()])
+  submit = SubmitField('Save')

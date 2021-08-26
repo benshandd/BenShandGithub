@@ -126,27 +126,28 @@ def separate_brands(brand):
 # seprate products pages
 @app.route("/products/<id>", methods=['GET','POST'])
 def separate_products(id):
-    sep = models.Products.query.filter_by(id=id).first_or_404()
+    sep = models.Products.query.filter_by(id=id).first()
     reviews = (
         models.Reviews.query.order_by(models.Reviews.id)
-        .filter_by(associated_product="polo_shirt")
-        .first_or_404()
+        .filter_by(associated_product=id)
+        .all()
     )
     form = Add_Review()
     if request.method=='GET':  # did the browser ask to see the page
         return render_template('separate_products.html', form=form, sep=sep,reviews=reviews)
     else:
         if form.validate_on_submit():
+            print("VALID")
             new_review = models.Reviews()
             new_review.name = form.name.data
             new_review.rating = form.rating.data
             new_review.comment = form.comment.data
             db.session.add(new_review)
             db.session.commit()
-            return redirect(url_for('separate_products', id=new_review.id))
+            return render_template("separate_products.html", sep=sep,form=form,reviews=reviews)
         else:
+            print("INVALID")
             return render_template("separate_products.html", sep=sep, form=form,reviews=reviews)
-
 
 
 

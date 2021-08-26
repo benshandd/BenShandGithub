@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Template</title>
+      {% block head %}
+      {% block title %}
+{% endblock %}
+      <title>template</title>
       <link rel='icon' href="/static/img/ico/favicon.ico"</>
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{url_for('static', filename='filter.js')}}"></script>
-       <!-- Icons at bottom-->
+      <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <!-- Icons at bottom-->
       <script src="https://kit.fontawesome.com/7344392da2.js" crossorigin="anonymous"></script>
+      {% endblock %}
    </head>
    {% include 'nav.html' %}
-
-      {% block content%}
-      {% endblock %}
-      {% include 'footer.html' %}
-
+   {% block content%}
+   {% endblock %}
+   {% include 'footer.html' %}
 </html>
