@@ -137,17 +137,20 @@ def separate_products(id):
         return render_template('separate_products.html', form=form, sep=sep,reviews=reviews)
     else:
         if form.validate_on_submit():
-            print("VALID")
+            print("VALID FORM")
             new_review = models.Reviews()
             new_review.name = form.name.data
             new_review.rating = form.rating.data
             new_review.comment = form.comment.data
+            new_review.associated_product = id
             db.session.add(new_review)
             db.session.commit()
-            return render_template("separate_products.html", sep=sep,form=form,reviews=reviews)
+            # get the reviews again, to pick up the newly posted one
+            reviews = models.Reviews.query.order_by(
+                models.Reviews.id).filter_by(associated_product=id).all()
         else:
-            print("INVALID")
-            return render_template("separate_products.html", sep=sep, form=form,reviews=reviews)
+            print("INVALID FORM")
+    return render_template("separate_products.html", sep=sep, form=form, reviews=reviews)
 
 
 

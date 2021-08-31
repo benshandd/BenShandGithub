@@ -134,3 +134,22 @@ def separate_products(id):
                    models.Reviews.query.order_by(models.Products.gender)
                    .filter_by(comment=comment).first()
                    )
+
+
+                   <div class="home_images1">
+              <a href="{{ url_for('shop') }}">
+                <div class="container">
+                      <img src="/static/img/home/camo_men.png" width="750" height="1100">
+                         <div class="centered">SHOP</div>
+                      </a>
+                    </div>
+                    </div>
+                  </div>
+                          <div class="home_images2">
+                      <a href="{{ url_for('sell') }}">
+                <div class="container">
+                      <img src="/static/img/home/orange_women.png" width="750" height="1100"  >
+                      <div class="centered">SELL</div>
+                      </a>
+                   </div>
+                    </div>

@@ -11,18 +11,27 @@
    <body>
      <div class="font">
       {% include 'home_title.html' %}
+
       <div class="home_images1">
  <a href="{{ url_for('shop') }}">
-         <img src="/static/img/home/camo_men.png" width="500" height="800">
+   <div class="container">
+         <img src="/static/img/home/camo_men.png" width="750" height="1100">
+            <div class="centered">SHOP</div>
          </a>
        </div>
+       </div>
+     </div>
              <div class="home_images2">
          <a href="{{ url_for('sell') }}">
-
-         <img src="/static/img/home/orange_women.png" width="500" height="800"  >
+   <div class="container">
+         <img src="/static/img/home/orange_women.png" width="750" height="1100"  >
+         <div class="centered">SELL</div>
+         </a>
       </div>
-    </div>
-      </a>
+       </div>
+
+</body>
+
 
    {%endblock %}
 </html>

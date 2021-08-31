@@ -4,16 +4,17 @@ class Products(db.Model):
   __tablename__ = 'Products'
   id = db.Column(db.Integer, primary_key=True)
   url = db.Column(db.String(50))
-  product_name = db.Column(db.String(80))
+  product_name = db.Column(db.String(50))
   description = db.Column(db.Text(250))
-  price = db.Column(db.Text(250))
-  colour = db.Column(db.Text(250))
-  size = db.Column(db.Text(250))
-  brand = db.Column(db.Text(250))
+  price = db.Column(db.Integer(), nullable = False)
+  colour = db.Column(db.String(20))
+  size = db.Column(db.String(20))
+  brand = db.Column(db.String(50))
   image1 = db.Column(db.String(120))
-  gender = db.Column(db.Text(250))
-  product_type = db.Column(db.Text(250))
-  store_availability = db.Column(db.String(80))
+  image2 = db.Column(db.String(120))
+  gender = db.Column(db.String(6))
+  product_type = db.Column(db.String(50))
+  store_availability = db.Column(db.String(20))
 
 
 
@@ -40,7 +41,7 @@ class Reviews(db.Model):
   __tablename__ = 'Reviews'
   id = db.Column(db.Integer, primary_key=True)
   associated_product = db.Column(db.Integer, db.ForeignKey('Products.id'), nullable = False)
-  name = db.Column(db.String(100))
+  name = db.Column(db.String(25))
   rating = db.Column(db.Integer)
   comment = db.Column(db.Text(250))
 

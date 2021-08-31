@@ -3,43 +3,68 @@
 <title>{{ sep.product_name }}</title>
 {% endblock %}
 {% block content %}
-<div class= "font">
-<!-- displays name for certain discountbox -->
-        <h2>{{ sep.product_name }}</h2>
+<div class= "AlergiaNormal">
+   <!-- displays name for certain discountbox -->
+   <h2>{{ sep.product_name }}</h2>
+<div class="align">
+<div class="recipe_image">
+   <img height="600" width="400" src="{{ sep.image1 }}">
 </div>
-    <div class="align">
-        <div class="recipe_image">
-             <img height="600" width="400" src="{{ sep.image1 }}">
+<div class="recipe_paragraph">
+   <!-- gets ingredients list from database-->
+      <div class="caps">
+        <h3>{{ sep.brand }}</h3>
         </div>
-        <div class="recipe_paragraph">
-            <!-- gets ingredients list from database-->
-            <h1>Description:</h1>
-            <h3>{{ sep.description }}</h3>
-            <!-- gets method for recipe from database-->
-            <h1>Price : </h1>
-            <h3>{{ sep.price }}</h3>
-<!-- displays name for certain discountbox -->
-</div>
+        <h3>{{ sep.price }}</h3>
+        <h3>Colour: {{ sep.colour }}</h3>
+        <h3>Size: {{ sep.size }}</h3>
+        <h3>Store: {{ sep.store_availability }}</h3>
+        <h3>Description:</h3>
+        <h3>{{ sep.description }}</h3>
+        <h3>Please note that shipping is $7 from each store.
+            For example if you purchase 2 items from separate stores/locations
+            it will be $14 total.</h3>
+        </div>
 <br>
-
 <form method="POST" enctype="multipart/form-data">
-{{ form.csrf_token }}
-<h2>Add Review : </h2>
-{{form.name.label}} {{form.name}}<br>
-{{form.rating.label}} {{form.rating}}<br>
-{{form.comment.label}} {{form.comment}}<br>
-{{form.submit}}
+   {{ form.csrf_token }}
+
+   <h2>Add Review : </h2>
+   {{form.name.label}} {{form.name}}<br>
+   {% if form.name.errors %}
+   {% for error in form.name.errors %}
+   <div class="products_error">
+      *{{ error }}<br />
+   </div>
+   {% endfor %}
+   {% endif %}
+
+   {{form.rating.label}} {{form.rating}}<br/>
+   {% if form.rating.errors %}
+   {% for error in form.rating.errors %}
+   <div class="products_error">
+      *{{ error }}<br />
+   </div>
+   {% endfor %}
+   {% endif %}
+
+   {{form.comment.label}} {{form.comment}}<br>
+   {% if form.comment.errors %}
+   {% for error in form.comment.errors %}
+   <div class="products_error">
+      *{{ error }}<br />
+   </div>
+   {% endfor %}
+   {% endif %}
+
+   {{form.submit}}
+
 </form>
 <br>
-
 <h1>Reviews : </h1>
 {% for review in reviews %}
 <p>{{review.name}}</p>
 <p>{{review.rating}}</p>
 <p>{{review.comment}}</p>
 {% endfor %}
-
-
-
-
 {% endblock %}

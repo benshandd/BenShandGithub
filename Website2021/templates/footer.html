@@ -1,11 +1,14 @@
 <head>
    <meta charset="utf-8">
+     <script src="{{url_for('static', filename='scroll.js')}}"></script>
    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
    <script src="{{url_for('static', filename='filter.js')}}"></script>
+
 </head>
 <footer>
    <div class="font">
    <div class="footer_pad">
+
       <a href="{{ url_for('sell') }}">SELL</a><br>
       <a class="nav_pad"  href="{{ url_for('our_stores') }}">OUR STORES</a><br>
       <a href="{{ url_for('contact') }}">CONTACT</a><br>
@@ -17,6 +20,12 @@
       <a href="https://www.wikipedia.com/"target="_blank">JOIN OUR NEWSLETTER</a><br>
       <a href="signup_page">SIGN UP</a><br>
    </div>
+
+     <div id="maindiv">
+       <div id="div1">
+         &nbsp;RECYLING CLOTHES IS THE WAY TO GO
+       </div>
+     </div>
    <div class = 'footer'>
       <p class="copy_right text-center">
          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Ben Shand</a>
