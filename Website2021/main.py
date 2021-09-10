@@ -69,7 +69,7 @@ def work_with_us():
 # route for shop landing page
 @app.route("/shop")
 def shop():
-    all_products = models.Products.query.order_by(models.Products.id).all()
+    all_products = models.Products.query.order_by(models.Products.url).all()
     return render_template("shop.html", all_products=all_products)
 
 
@@ -77,7 +77,7 @@ def shop():
 @app.route("/shop/mens")
 def mens_filter():
     mens_all = (
-        models.Products.query.order_by(models.Products.gender)
+        models.Products.query.order_by(models.Products.product_type)
         .filter_by(gender="mens")
         .all()
     )
@@ -119,7 +119,7 @@ def womens_product_type_filter(product_type):
 
 @app.route("/shop/brands/<brand>")
 def separate_brands(brand):
-    all_brands = models.Products.query.filter_by(brand=brand).all()
+    all_brands = models.Products.query.order_by(models.Products.url).filter_by(brand=brand).all ()
     return render_template("separate_brands.html", all_brands=all_brands)
 
 

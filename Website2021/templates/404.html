@@ -5,9 +5,8 @@
    <title>Page Not Found</title>
 </head>
 {% extends "template.html" %}
-{% block body %}
-<div class= "allfont">
-   <div class= "left">
+{% block content %}
+<div class="font">
       <h1> Page Not Found </h1>
    </div>
    <h2>What you were looking for is just not here.</h2>
@@ -15,14 +14,5 @@
    <h2><a href="{{ url_for('home') }}">Click me to go somewhere better<a></h2>
 </div>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 {% endblock %}

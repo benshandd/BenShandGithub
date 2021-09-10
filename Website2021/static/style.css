@@ -216,7 +216,7 @@ nav{perspective: 800px; z-index: 999;}
     float: left;
       font-family: 'BraziliaSevenCGRegular';
       font-size: 25px;
-      padding-bottom: 10px;
+padding-top: 2.6px;
 
 }
 .navigation-items>ul>li{
@@ -512,7 +512,9 @@ body {
     padding-right: 20px;
 }
 
+.shop_position{
 
+}
 
 
 

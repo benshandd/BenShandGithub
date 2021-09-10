@@ -1,7 +1,11 @@
+
 {% extends "template.html" %}
 {% block head %}
 <title>{{ sep.product_name }}</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='12columns.css') }}">
 {% endblock %}
+{% block scripts %}
+{% endblock scripts %}
 {% block content %}
 <div class= "AlergiaNormal">
    <!-- displays name for certain discountbox -->
@@ -58,7 +62,6 @@
    {% endif %}
 
    {{form.submit}}
-
 </form>
 <br>
 <h1>Reviews : </h1>
@@ -67,4 +70,117 @@
 <p>{{review.rating}}</p>
 <p>{{review.comment}}</p>
 {% endfor %}
+
+
+
+  <div class="yont">
+    <div class="grid product">
+      <div class="column-xs-12 column-md-7">
+        <div class="product-gallery">
+          <div class="product-image">
+            <img class="active" src="{{ sep.image1 }}">
+          </div>
+          <ul>
+          <ul class="image-list">
+          </ul>
+        </div>
+      </div>
+      <div class="column-xs-12 column-md-5">
+          <div class="h1_12">
+        <h1>{{ sep.product_name }}</h1>
+        </div>
+          <div class="h2_12">
+        <h2>{{ sep.price }}</h2>
+            </div>
+        <div class="description">
+        <p>  Colour: {{ sep.colour }}</p>
+          <p>   Size: {{ sep.size }}</p>
+        <p>     Store: {{ sep.store_availability }}</p>
+          <p>   Description:</p>
+          <p>   {{ sep.description }}</p>
+          <p>   Please note that shipping is $7 from each store.
+              For example if you purchase 2 items from separate stores/locations
+              it will be $14 total.</p>
+        </div>
+        <button class="add-to-cart">Add To Cart</button>
+        <div class="description">
+          <form method="POST" enctype="multipart/form-data">
+             {{ form.csrf_token }}
+<div class="add_review_float">
+             <h2>Add Review : </h2>
+             {{form.name.label}} {{form.name}}<br>
+             {% if form.name.errors %}
+             {% for error in form.name.errors %}
+             <div class="products_error">
+                *{{ error }}<br />
+             </div>
+             {% endfor %}
+             {% endif %}
+
+             {{form.rating.label}} {{form.rating}}<br/>
+             {% if form.rating.errors %}
+             {% for error in form.rating.errors %}
+             <div class="products_error">
+                *{{ error }}<br />
+             </div>
+             {% endfor %}
+             {% endif %}
+
+             {{form.comment.label}} {{form.comment}}<br>
+             {% if form.comment.errors %}
+             {% for error in form.comment.errors %}
+             <div class="products_error">
+                *{{ error }}<br />
+             </div>
+             {% endfor %}
+             {% endif %}
+              {{form.submit}}
+              </div>
+          </form>
+
+<div class="review_float">
+          <h2>Reviews : </h2>
+          {% for review in reviews %}
+          <p>Name: {{review.name}}</p>
+          <p>Rating: {{review.rating}}</p>
+          <p>Comment: {{review.comment}}</p>
+          <br>
+          {% endfor %}
+        </div>
+      </div>
+      </div>
+
+    </div>
+    <div class="grid related-products">
+      <div class="column-xs-12">
+          <div class="h3_12">
+        <h3>You may also like</h3>
+            </div>
+      </div>
+      <div class="column-xs-12 column-md-4">
+        <img src="https://source.unsplash.com/miziNqvJx5M">
+          <div class="h4_12">
+        <h4>Succulent</h4>
+            </div>
+        <p class="price">$19.99</p>
+      </div>
+      <div class="column-xs-12 column-md-4">
+        <img src="https://source.unsplash.com/2y6s0qKdGZg">
+              <div class="h4_12">
+        <h4>Terranium</h4>
+          </div>
+        <p class="price">$19.99</p>
+      </div>
+      <div class="column-xs-12 column-md-4">
+        <img src="https://source.unsplash.com/6Rs76hNbIWE">
+          <div class="h4_12">
+        <h4>Cactus</h4>
+          </div>
+        <p class="price">$19.99</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
 {% endblock %}

@@ -2,12 +2,17 @@
 <html>
    <head>
       {% block head %}
-      {% block title %}
-{% endblock %}
       <title>template</title>
+      
+      {% endblock %}
+      {% block scripts %}
       <link rel='icon' href="/static/img/ico/favicon.ico"</>
       <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='12columns.css') }}">
       <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <script src="{{url_for('static', filename='fades.js')}}"></script>
+      <script src="{{url_for('static', filename='scroll.js')}}"></script>
+        <script src="{{url_for('static', filename='review.js')}}"></script>
       <!-- Icons at bottom-->
       <script src="https://kit.fontawesome.com/7344392da2.js" crossorigin="anonymous"></script>
       {% endblock %}
