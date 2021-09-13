@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html>
    <head>
-     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-   <script src="{{url_for('static', filename='filter.js')}}"></script>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <script src="{{url_for('static', filename='filter.js')}}"></script>
       <title>whocares?</title>
       <meta charset="utf-8">
    </head>
    {% extends "template.html" %}
    {% block content %}
    <body>
-     <div class="font">
-      {% include 'home_title.html' %}
-
-      <div class="home_images1">
- <a href="{{ url_for('shop') }}">
-   <div class="container">
-         <img src="/static/img/home/camo_men.png" width="750" height="1100">
-            <div class="centered">SHOP</div>
-         </a>
-       </div>
-       </div>
-     </div>
-             <div class="home_images2">
-         <a href="{{ url_for('sell') }}">
-   <div class="container">
-         <img src="/static/img/home/orange_women.png" width="750" height="1100"  >
-         <div class="centered">SELL</div>
-         </a>
+      <div class="font">
+         {% include 'home_title.html' %}
+         <div class="home_images1">
+            <a href="{{ url_for('shop') }}">
+               <div class="container">
+                  <div class="centered">SHOP</div>
+                  <img src="/static/img/home/camo_men.png" width="750" height="1100">
+            </a>
+            </div>
+         </div>
       </div>
-       </div>
-
-</body>
-
-
+      <div class="home_images2">
+         <a href="{{ url_for('sell') }}">
+            <div class="container">
+               <div class="centered">SELL</div>
+               <img src="/static/img/home/orange_women.png" width="750" height="1100"  >
+         </a>
+         </div>
+      </div>
+   </body>
    {%endblock %}
 </html>

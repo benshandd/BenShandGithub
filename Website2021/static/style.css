@@ -57,7 +57,6 @@
 
 }
 .home_images1{
-
 float: left;
 clear: left;
 }
@@ -68,6 +67,7 @@ float: right;
 clear:  right;
 }
 .centered {
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
